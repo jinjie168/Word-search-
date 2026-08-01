@@ -115,10 +115,10 @@ window.__crazySdkReady = false;
 
   /* ===================== 顶部HUD (top HUD) ===================== */
   #hud-top{width:100%; box-sizing:border-box; padding:18px 18px 10px; z-index:4; display:none; align-items:center; justify-content:space-between; gap:12px; flex-shrink:0;}
-  #hud-left{display:flex; gap:8px; flex-wrap:wrap; max-width:44%;}
+  #hud-left{display:flex; gap:8px; flex-wrap:wrap; max-width:44%; flex-shrink:0;}
   #hud-right{display:flex; gap:8px; flex-shrink:0;}
-  #progress-wrap{flex:1; max-width:340px; display:flex; flex-direction:column; align-items:center; gap:4px; min-width:0;}
-  #progress-label{font-family:'Baloo 2'; font-size:clamp(11px,3vmin,14px); letter-spacing:1px; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.4); text-transform:uppercase; white-space:nowrap;}
+  #progress-wrap{flex:1 1 auto; max-width:340px; display:flex; flex-direction:column; align-items:center; gap:4px; min-width:60px;}
+  #progress-label{display:block; width:100%; font-family:'Baloo 2'; font-size:clamp(11px,3vmin,14px); letter-spacing:1px; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,0.4); text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   #progress-track{position:relative; width:100%; height:16px; border-radius:999px; background:rgba(20,25,40,0.45); border:1px solid rgba(255,255,255,0.35); overflow:visible;}
 
   /* ===================== 小怪舞台 (prominent monster stage) ===================== */
@@ -154,7 +154,7 @@ window.__crazySdkReady = false;
 
   /* ===================== 游戏画面 (game screen) —— 全部正常文档流，浏览器自动保证唔会重叠 ===================== */
   #screen-game{position:absolute; inset:0; z-index:1; display:none; flex-direction:column;}
-  #game-stage{flex:1; min-height:0; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 5%; gap:12px; container-type:size; container-name:stage;}
+  #game-stage{flex:1; min-height:0; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 7%; gap:12px; container-type:size; container-name:stage;}
 
   #grid-area{display:grid; gap:clamp(4px,1.2cqh,9px); min-width:0; width:min(280px,44cqw,44vw); max-height:100%;}
   .tile{width:100%; aspect-ratio:1/1; height:auto; border-radius:14px; position:relative; display:flex; align-items:center; justify-content:center;}
@@ -190,10 +190,10 @@ window.__crazySdkReady = false;
   #wheel-shuffle{position:absolute; left:50%; top:50%; width:clamp(34px,10vmin,46px); height:clamp(34px,10vmin,46px); margin-left:calc(clamp(34px,10vmin,46px) / -2); margin-top:calc(clamp(34px,10vmin,46px) / -2); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:clamp(15px,4vmin,21px); color:#9a8a6a; cursor:pointer; background:rgba(255,255,255,0.5);}
   #wheel-shuffle:active{transform:scale(.9) rotate(120deg); transition:transform .3s;}
 
-  #hint-btn{position:absolute; left:-26%; top:4%;}
+  #hint-btn{position:absolute; left:-34%; top:4%;}
   #hint-btn .icon-circle-lg{width:clamp(42px,12vmin,56px); height:clamp(42px,12vmin,56px); border-radius:50%; background:linear-gradient(180deg,#2b3552,#151c30); display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--sky); box-shadow:0 8px 16px rgba(0,0,0,0.35); position:relative; font-size:clamp(16px,4.6vmin,22px);}
   #hint-btn .icon-circle-lg span.n{font-family:'Baloo 2'; font-weight:800; font-size:11px; color:#fff;}
-  #spin-launcher{position:absolute; left:-26%; bottom:4%;}
+  #spin-launcher{position:absolute; left:-34%; bottom:4%;}
   #spin-launcher .icon-circle-lg{width:clamp(42px,12vmin,56px); height:clamp(42px,12vmin,56px); border-radius:50%; background:linear-gradient(180deg,#2b3552,#151c30); display:flex; align-items:center; justify-content:center; color:var(--blush); box-shadow:0 8px 16px rgba(0,0,0,0.35); font-size:clamp(18px,5vmin,24px); position:relative;}
   .notif-dot{position:absolute; top:-3px; right:-3px; width:14px; height:14px; border-radius:50%; background:#ff3b30; border:2px solid #151c30; display:none; box-shadow:0 2px 4px rgba(0,0,0,0.4);}
   .notif-dot.show{display:block; animation:notifPulse 1.2s infinite;}
@@ -201,8 +201,8 @@ window.__crazySdkReady = false;
 
   @media (orientation: portrait){
     #game-stage{ flex-direction:column; justify-content:space-evenly; padding:8px 0; }
-    #hint-btn{ left:-24%; top:50%; transform:translateY(-50%); }
-    #spin-launcher{ left:auto; right:-24%; bottom:auto; top:50%; transform:translateY(-50%); }
+    #hint-btn{ left:-30%; top:50%; transform:translateY(-50%); }
+    #spin-launcher{ left:auto; right:-30%; bottom:auto; top:50%; transform:translateY(-50%); }
   }
 
   /* ===================== 弹窗 (modals) ===================== */
@@ -260,7 +260,7 @@ window.__crazySdkReady = false;
   .btn-primary{font-family:'Baloo 2'; font-weight:700; font-size:18px; color:#5a3300; background:linear-gradient(180deg,#ffe27a,var(--gold) 55%,var(--gold-deep)); border:none; padding:14px 40px; border-radius:999px; box-shadow:0 7px 0 #a8620f; cursor:pointer;}
   .btn-primary:active{transform:translateY(5px); box-shadow:none;}
 
-  #toast{position:absolute; top:100px; left:50%; transform:translateX(-50%) translateY(-14px); z-index:20; padding:10px 22px; border-radius:999px; font-family:'Baloo 2'; font-weight:700; font-size:14px; color:var(--ink); opacity:0; transition:all .3s; pointer-events:none;}
+  #toast{position:absolute; top:8px; left:50%; transform:translateX(-50%) translateY(-14px); z-index:20; padding:10px 22px; border-radius:999px; font-family:'Baloo 2'; font-weight:700; font-size:14px; color:var(--ink); opacity:0; transition:all .3s; pointer-events:none; max-width:90vw; text-align:center;}
   #toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
 </style>
 </head>
