@@ -126,7 +126,7 @@ window.__crazySdkReady = false;
   #monster-name{font-family:'Baloo 2'; font-weight:700; font-size:clamp(10px,2.6vmin,13px); letter-spacing:2px; text-transform:uppercase; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.7);}
   #monster-icon{width:clamp(56px,14vmin,100px); height:clamp(56px,14vmin,100px); filter:drop-shadow(0 0 16px var(--chapter-glow)); animation:monsterBob 2.4s ease-in-out infinite;}
   @supports (container-type: size){
-    #monster-icon{ width:clamp(50px,22cqh,140px); height:clamp(50px,22cqh,140px); }
+    #monster-icon{ width:clamp(50px, min(22cqh,26cqw), 140px); height:clamp(50px, min(22cqh,26cqw), 140px); }
   }
   #monster-icon.hit{animation:monsterHit .3s;}
   #monster-icon.attack{animation:monsterAttack .5s;}
@@ -156,11 +156,8 @@ window.__crazySdkReady = false;
   #screen-game{position:absolute; inset:0; z-index:1; display:none; flex-direction:column;}
   #game-stage{flex:1; min-height:0; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 5%; gap:12px; container-type:size; container-name:stage;}
 
-  #grid-area{display:grid; gap:clamp(5px,1.4vmin,9px); min-width:0; --tile-size:clamp(34px,8vmin,64px);}
-  @supports (container-type: size){
-    #grid-area{ --tile-size:clamp(30px,13cqh,84px); }
-  }
-  .tile{width:var(--tile-size); height:var(--tile-size); border-radius:14px; position:relative; display:flex; align-items:center; justify-content:center;}
+  #grid-area{display:grid; gap:clamp(4px,1.2cqh,9px); min-width:0; width:min(280px,44cqw,44vw); max-height:100%;}
+  .tile{width:100%; aspect-ratio:1/1; height:auto; border-radius:14px; position:relative; display:flex; align-items:center; justify-content:center;}
   .tile.blank{background:linear-gradient(180deg,#fffdf7,#fbeed8); box-shadow:0 4px 0 rgba(150,110,50,0.35), inset 0 2px 3px rgba(255,255,255,0.8), 0 6px 10px rgba(0,0,0,0.18);}
   .tile.solved{background:linear-gradient(180deg,#8fe9c7,#3fb98c); box-shadow:0 4px 0 rgba(20,110,80,0.4), inset 0 2px 3px rgba(255,255,255,0.5), 0 6px 10px rgba(0,0,0,0.18);}
   .tile.solved .letter{color:#0b3d2e;}
@@ -180,7 +177,7 @@ window.__crazySdkReady = false;
   #word-preview::after{content:''; position:absolute; left:50%; bottom:-7px; transform:translateX(-50%); width:14px; height:14px; background:var(--gold-deep); clip-path:polygon(50% 100%,0 0,100% 0);}
   #wheel-outer{position:relative; width:clamp(140px,38vmin,260px); height:clamp(140px,38vmin,260px);}
   @supports (container-type: size){
-    #wheel-outer{ width:clamp(130px,58cqh,340px); height:clamp(130px,58cqh,340px); }
+    #wheel-outer{ width:clamp(130px, min(58cqh,42cqw), 320px); height:clamp(130px, min(58cqh,42cqw), 320px); }
   }
   #wheel-circle{position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 32% 28%, #ffffff, #f4ecd8 70%, #ece0c4); box-shadow:0 18px 34px rgba(0,0,0,0.4), inset 0 -8px 16px rgba(180,140,70,0.25), inset 0 6px 10px rgba(255,255,255,0.9);}
   #wheel-svg{position:absolute; inset:0; width:100%; height:100%; pointer-events:none;}
@@ -328,26 +325,26 @@ window.__crazySdkReady = false;
     </div>
   </div>
 
-  <!-- ================= TOP HUD ================= -->
-  <div id="hud-top">
-    <div id="hud-left">
-      <div class="pill glass"><span class="icon-circle coin">¢</span><span class="value" id="coin-count">0</span></div>
-      <div class="pill glass"><span class="icon-circle bulb">💡</span><span class="value" id="bulb-count">0</span></div>
-      <div id="lives-row"></div>
-    </div>
-    <div id="progress-wrap">
-      <span id="progress-label">Voyage Progress</span>
-      <div id="progress-track"><div id="progress-fill" style="width:0%"></div><span id="progress-gift">🎁</span></div>
-      <div id="timer-wrap"><span id="timer-icon">💣</span><div id="timer-track"><div id="timer-fill"></div></div></div>
-    </div>
-    <div id="hud-right">
-      <button class="icon-btn glass" id="btn-armory-hud" style="background:linear-gradient(180deg,#ffd97a,#e0a52c);">⚔️</button>
-      <button class="icon-btn glass" id="btn-settings">⚙️</button>
-    </div>
-  </div>
-
   <!-- ================= GAME SCREEN ================= -->
   <div id="screen-game">
+    <!-- ================= TOP HUD ================= -->
+    <div id="hud-top">
+      <div id="hud-left">
+        <div class="pill glass"><span class="icon-circle coin">¢</span><span class="value" id="coin-count">0</span></div>
+        <div class="pill glass"><span class="icon-circle bulb">💡</span><span class="value" id="bulb-count">0</span></div>
+        <div id="lives-row"></div>
+      </div>
+      <div id="progress-wrap">
+        <span id="progress-label">Voyage Progress</span>
+        <div id="progress-track"><div id="progress-fill" style="width:0%"></div><span id="progress-gift">🎁</span></div>
+        <div id="timer-wrap"><span id="timer-icon">💣</span><div id="timer-track"><div id="timer-fill"></div></div></div>
+      </div>
+      <div id="hud-right">
+        <button class="icon-btn glass" id="btn-armory-hud" style="background:linear-gradient(180deg,#ffd97a,#e0a52c);">⚔️</button>
+        <button class="icon-btn glass" id="btn-settings">⚙️</button>
+      </div>
+    </div>
+
     <div id="game-stage">
       <div id="grid-area"></div>
 
@@ -1072,9 +1069,8 @@ function loadLevel(idx){
 
   const rows = maxR-minR+1, cols = maxC-minC+1;
   const gridEl = document.getElementById('grid-area');
-  const tileSize = 'var(--tile-size)';
-  gridEl.style.gridTemplateColumns = `repeat(${cols}, ${tileSize})`;
-  gridEl.style.gridTemplateRows = `repeat(${rows}, ${tileSize})`;
+  gridEl.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  gridEl.style.gridTemplateRows = `repeat(${rows}, auto)`;
   gridEl.innerHTML = '';
   for(let r=minR; r<=maxR; r++){
     for(let c=minC; c<=maxC; c++){
@@ -1131,7 +1127,7 @@ function renderWheel(letters){
     btn.textContent = ch;
     btn.style.width = btnSize+'px'; btn.style.height = btnSize+'px';
     btn.style.marginLeft = (-btnSize/2)+'px'; btn.style.marginTop = (-btnSize/2)+'px';
-    btn.style.fontSize = Math.max(16, btnSize*0.44)+'px';
+    btn.style.fontSize = Math.max(20, btnSize*0.5)+'px';
     btn.style.left = x+'px'; btn.style.top = y+'px';
     btn.dataset.idx = i;
     wrap.appendChild(btn);
